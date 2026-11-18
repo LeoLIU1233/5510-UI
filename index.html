@@ -1,0 +1,2996 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Harbor Invest - Digital Asset Investment Desk</title>
+  <style>
+    html,
+    body {
+      min-height: 100%;
+      margin: 0;
+      background: light-dark(#eef3f5, #091116);
+    }
+
+    body {
+      padding: 18px;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 560px) {
+      body {
+        padding: 0;
+      }
+    }
+  </style>
+  <script defer src="./lucide.min.js"></script>
+</head>
+<body>
+<div id="digital-asset-ui" class="da-app" aria-label="多平台数字资产投资台 UI 原型">
+  <header class="da-topbar">
+    <div class="da-brand">
+      <div class="da-brandmark" aria-hidden="true">H</div>
+      <div>
+        <strong>Harbor Invest</strong>
+        <span>多平台数字资产投资台</span>
+      </div>
+    </div>
+    <div class="da-topmeta">
+      <span class="da-status"><i data-lucide="shield-check" aria-hidden="true"></i> KYC 已完成 · 专业投资者</span>
+      <span class="da-clock">行情更新 14:32:08 HKT</span>
+      <button class="da-langtoggle" id="language-toggle" type="button" aria-label="Switch to Chinese">
+        <i data-lucide="languages" aria-hidden="true"></i>
+        <span>中文</span>
+      </button>
+      <button class="da-iconbtn" type="button" aria-label="通知">
+        <i data-lucide="bell" aria-hidden="true"></i>
+      </button>
+      <div class="da-avatar" aria-label="用户 Leo">LL</div>
+    </div>
+  </header>
+
+  <div class="da-shell">
+    <aside class="da-rail" aria-label="主导航">
+      <div class="da-navlabel">工作台</div>
+      <nav class="da-nav">
+        <button class="da-navitem is-active" type="button" data-screen-target="compare" aria-current="page">
+          <i data-lucide="line-chart" aria-hidden="true"></i>
+          <span>比价大屏</span>
+        </button>
+        <button class="da-navitem" type="button" data-screen-target="trade">
+          <i data-lucide="star" aria-hidden="true"></i>
+          <span>自选操作</span>
+        </button>
+        <button class="da-navitem" type="button" data-screen-target="assistant">
+          <i data-lucide="message-circle" aria-hidden="true"></i>
+          <span>聊天助手</span>
+        </button>
+        <button class="da-navitem" type="button" data-screen-target="account">
+          <i data-lucide="wallet" aria-hidden="true"></i>
+          <span>账户统计</span>
+        </button>
+      </nav>
+      <div class="da-railsummary">
+        <span>可用余额</span>
+        <strong>HK$ 428,560.00</strong>
+        <button type="button">查看账户 <i data-lucide="arrow-up-right" aria-hidden="true"></i></button>
+      </div>
+    </aside>
+
+    <main class="da-main">
+      <section class="da-screen" id="screen-compare" aria-labelledby="compare-title">
+        <div class="da-pagehead">
+          <div>
+            <p class="da-eyebrow">MARKET OVERVIEW</p>
+            <h1 id="compare-title">比价大屏</h1>
+            <p>聚合持牌交易所报价，比较可执行价格、费用与预估滑点。</p>
+          </div>
+          <div class="da-headactions">
+            <button class="da-secondary" type="button"><i data-lucide="refresh-cw" aria-hidden="true"></i> 刷新</button>
+            <button class="da-primary" type="button"><i data-lucide="sliders-horizontal" aria-hidden="true"></i> 设置比较项</button>
+          </div>
+        </div>
+
+        <div class="da-toolbar">
+          <div class="da-segmented" aria-label="比较范围">
+            <button class="is-selected" type="button" data-choice-group="compare-mode">同资产多平台</button>
+            <button type="button" data-choice-group="compare-mode">跨资产收益</button>
+          </div>
+          <div class="da-chips" aria-label="资产筛选">
+            <button class="da-chip is-selected" type="button" data-choice-group="compare-asset">BTC</button>
+            <button class="da-chip" type="button" data-choice-group="compare-asset">ETH</button>
+            <button class="da-chip" type="button" data-choice-group="compare-asset">SOL</button>
+            <button class="da-chip" type="button" data-choice-group="compare-asset">稳定币理财</button>
+          </div>
+          <span class="da-fresh">实时 · 14:32:08</span>
+        </div>
+
+        <div class="da-kpis">
+          <article class="da-kpi da-kpi-featured">
+            <span>最佳买入价</span>
+            <strong>US$ 68,420.10</strong>
+            <small>HashKey Exchange</small>
+          </article>
+          <article class="da-kpi">
+            <span>最佳卖出价</span>
+            <strong>US$ 68,468.80</strong>
+            <small>OSL Exchange</small>
+          </article>
+          <article class="da-kpi">
+            <span>买卖价差</span>
+            <strong>0.071%</strong>
+            <small>较市场均值低 18%</small>
+          </article>
+          <article class="da-kpi">
+            <span>预估总成本</span>
+            <strong>US$ 48.72</strong>
+            <small>买入 0.5 BTC · 含费用</small>
+          </article>
+        </div>
+
+        <div class="da-dashboard-grid">
+          <article class="da-panel da-quote-panel">
+            <div class="da-panelhead">
+              <div>
+                <h2>BTC / USDT 跨平台报价</h2>
+                <p>按买入 0.5 BTC 的可执行总成本排序</p>
+              </div>
+              <button class="da-textbtn" type="button">查看订单簿 <i data-lucide="chevron-right" aria-hidden="true"></i></button>
+            </div>
+            <div class="da-tablewrap">
+              <table class="da-table">
+                <thead>
+                  <tr>
+                    <th>交易所</th>
+                    <th>买入价</th>
+                    <th>卖出价</th>
+                    <th>手续费</th>
+                    <th>预估滑点</th>
+                    <th>总成本</th>
+                    <th><span class="sr-only">操作</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="is-best">
+                    <td><span class="da-venue"><b>H</b>HashKey</span><span class="da-mini-badge">最优</span></td>
+                    <td>68,420.10</td>
+                    <td>68,468.80</td>
+                    <td>0.20%</td>
+                    <td>0.03%</td>
+                    <td class="da-money">US$ 48.72</td>
+                    <td><button class="da-rowbtn" type="button">选择</button></td>
+                  </tr>
+                  <tr>
+                    <td><span class="da-venue"><b>O</b>OSL</span></td>
+                    <td>68,436.50</td>
+                    <td>68,481.20</td>
+                    <td>0.18%</td>
+                    <td>0.05%</td>
+                    <td class="da-money">US$ 55.02</td>
+                    <td><button class="da-rowbtn" type="button">选择</button></td>
+                  </tr>
+                  <tr>
+                    <td><span class="da-venue"><b>H</b>HashKey Pro</span></td>
+                    <td>68,441.00</td>
+                    <td>68,472.40</td>
+                    <td>0.15%</td>
+                    <td>0.08%</td>
+                    <td class="da-money">US$ 57.36</td>
+                    <td><button class="da-rowbtn" type="button">选择</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="da-footnote">
+              <i data-lucide="info" aria-hidden="true"></i>
+              总成本 = 买入价 × 数量 + 手续费 + 预估滑点影响；最终成交价以订单确认页为准。
+            </div>
+          </article>
+
+          <article class="da-panel da-route-panel">
+            <div class="da-panelhead">
+              <div>
+                <h2>智能路由预览</h2>
+                <p>0.5 BTC · 价格优先</p>
+              </div>
+              <span class="da-live">动态</span>
+            </div>
+            <div class="da-route">
+              <div class="da-route-point">
+                <span>下单金额</span>
+                <strong>US$ 34,210.05</strong>
+              </div>
+              <div class="da-route-line" aria-hidden="true"></div>
+              <div class="da-route-point is-primary">
+                <span>建议路径</span>
+                <strong>HashKey · 限价单</strong>
+                <small>预计成交 0.5 BTC</small>
+              </div>
+              <div class="da-route-line is-muted" aria-hidden="true"></div>
+              <div class="da-route-point is-muted">
+                <span>备选路径</span>
+                <strong>OSL · 限价单</strong>
+                <small>预计多付 US$ 6.30</small>
+              </div>
+            </div>
+            <div class="da-mini-chartwrap">
+              <div class="da-chart-caption"><span>近 24 小时价差</span><strong>0.071%</strong></div>
+              <svg class="da-spark" viewBox="0 0 320 90" role="img" aria-label="BTC 两个交易所近 24 小时价差走势，当前为 0.071%">
+                <title>近 24 小时跨平台价差</title>
+                <line x1="0" y1="72" x2="320" y2="72" class="da-axis-line"></line>
+                <path class="da-spark-fill" d="M0 66 L24 64 L48 68 L72 52 L96 57 L120 45 L144 50 L168 31 L192 36 L216 26 L240 37 L264 29 L288 33 L320 18 L320 90 L0 90 Z"></path>
+                <path class="da-spark-line" d="M0 66 L24 64 L48 68 L72 52 L96 57 L120 45 L144 50 L168 31 L192 36 L216 26 L240 37 L264 29 L288 33 L320 18"></path>
+                <circle cx="320" cy="18" r="4" class="da-spark-dot"></circle>
+              </svg>
+              <div class="da-chart-ticks"><span>00:00</span><span>06:00</span><span>12:00</span><span>现在</span></div>
+            </div>
+          </article>
+        </div>
+
+        <article class="da-panel da-crossasset">
+          <div class="da-panelhead">
+            <div>
+              <h2>稳定币理财 vs 传统货币基金</h2>
+              <p>按风险等级、期限与预估年化并排比较</p>
+            </div>
+            <span class="da-mini-badge da-mini-badge-neutral">仅展示符合资格产品</span>
+          </div>
+          <div class="da-product-grid">
+            <button class="da-product is-selected" type="button" data-choice-group="product">
+              <span class="da-product-type">稳定币理财 · HashKey</span>
+              <strong>USDC 活期理财</strong>
+              <span class="da-return">4.25% <small>预估年化</small></span>
+              <span class="da-productmeta">T+0 赎回 · 低风险</span>
+            </button>
+            <button class="da-product" type="button" data-choice-group="product">
+              <span class="da-product-type">稳定币理财 · OSL</span>
+              <strong>USDT 灵活存</strong>
+              <span class="da-return">3.92% <small>预估年化</small></span>
+              <span class="da-productmeta">T+1 赎回 · 低风险</span>
+            </button>
+            <button class="da-product" type="button" data-choice-group="product">
+              <span class="da-product-type">传统货币基金</span>
+              <strong>港元货币市场基金 A</strong>
+              <span class="da-return">3.56% <small>近 7 日年化</small></span>
+              <span class="da-productmeta">T+1 赎回 · 低风险</span>
+            </button>
+          </div>
+        </article>
+      </section>
+
+      <section class="da-screen" id="screen-trade" aria-labelledby="trade-title" hidden>
+        <div class="da-pagehead">
+          <div>
+            <p class="da-eyebrow">WATCHLIST & ORDER</p>
+            <h1 id="trade-title">自选操作</h1>
+            <p>从关注列表进入报价比较，并在同一页面完成下单前检查。</p>
+          </div>
+          <div class="da-headactions">
+            <button class="da-secondary" type="button"><i data-lucide="plus" aria-hidden="true"></i> 添加自选</button>
+            <button class="da-primary" type="button"><i data-lucide="arrow-left-right" aria-hidden="true"></i> 转入资金</button>
+          </div>
+        </div>
+
+        <div class="da-trade-layout">
+          <article class="da-panel da-watchlist">
+            <div class="da-panelhead">
+              <div>
+                <h2>我的自选</h2>
+                <p>4 项资产 · 价格自动刷新</p>
+              </div>
+              <button class="da-iconbtn da-iconbtn-light" type="button" aria-label="搜索自选资产"><i data-lucide="search" aria-hidden="true"></i></button>
+            </div>
+            <div class="da-watchlist-head" aria-hidden="true">
+              <span>资产</span><span>最新价</span><span>24H</span><span>状态</span>
+            </div>
+            <button class="da-watchrow is-selected" type="button" aria-pressed="true">
+              <span class="da-asset"><b class="da-coin da-coin-btc">₿</b><span><strong>Bitcoin</strong><small>BTC / USDT</small></span></span>
+              <span class="da-number">68,420.10<small>US$</small></span>
+              <span class="da-positive">+2.84%</span>
+              <span class="da-state-dot">可交易</span>
+            </button>
+            <button class="da-watchrow" type="button">
+              <span class="da-asset"><b class="da-coin da-coin-eth">Ξ</b><span><strong>Ethereum</strong><small>ETH / USDT</small></span></span>
+              <span class="da-number">3,512.42<small>US$</small></span>
+              <span class="da-positive">+1.37%</span>
+              <span class="da-state-dot">可交易</span>
+            </button>
+            <button class="da-watchrow" type="button">
+              <span class="da-asset"><b class="da-coin da-coin-sol">S</b><span><strong>Solana</strong><small>SOL / USDT</small></span></span>
+              <span class="da-number">182.36<small>US$</small></span>
+              <span class="da-negative">-0.62%</span>
+              <span class="da-state-dot">可交易</span>
+            </button>
+            <button class="da-watchrow" type="button">
+              <span class="da-asset"><b class="da-coin da-coin-cash">$</b><span><strong>USDC 活期理财</strong><small>稳定币 · 无价格波动</small></span></span>
+              <span class="da-number">4.25%<small>年化</small></span>
+              <span class="da-positive">+0.01%</span>
+              <span class="da-state-dot">可申购</span>
+            </button>
+            <div class="da-watchfoot">
+              <span><i data-lucide="star" aria-hidden="true"></i> 点击星标可移除自选</span>
+              <button class="da-textbtn" type="button">管理分组</button>
+            </div>
+          </article>
+
+          <article class="da-panel da-order">
+            <div class="da-panelhead">
+              <div>
+                <h2>BTC / USDT</h2>
+                <p>HashKey 最优 · 预计立即成交</p>
+              </div>
+              <span class="da-quote-pill">买入 US$ 68,420.10</span>
+            </div>
+
+            <div class="da-order-side" role="group" aria-label="交易方向">
+              <button class="is-buy" type="button" data-choice-group="side" data-side="buy">买入</button>
+              <button type="button" data-choice-group="side" data-side="sell">卖出</button>
+            </div>
+
+            <div class="da-field-row">
+              <label class="da-field">
+                <span>交易所路由</span>
+                <div class="da-selectwrap">
+                  <select id="venue-select">
+                    <option>自动路由 · 最优价格</option>
+                    <option>HashKey Exchange</option>
+                    <option>OSL Exchange</option>
+                  </select>
+                  <i data-lucide="chevron-down" aria-hidden="true"></i>
+                </div>
+              </label>
+              <label class="da-field">
+                <span>订单类型</span>
+                <div class="da-selectwrap">
+                  <select>
+                    <option>限价单</option>
+                    <option>市价单</option>
+                  </select>
+                  <i data-lucide="chevron-down" aria-hidden="true"></i>
+                </div>
+              </label>
+            </div>
+
+            <div class="da-field-row">
+              <label class="da-field">
+                <span>买入数量</span>
+                <div class="da-inputwrap">
+                  <input id="order-amount" type="number" min="0" step="0.01" value="0.50" inputmode="decimal">
+                  <b>BTC</b>
+                </div>
+              </label>
+              <label class="da-field">
+                <span>限价</span>
+                <div class="da-inputwrap">
+                  <input type="text" value="68,420.10" inputmode="decimal">
+                  <b>US$</b>
+                </div>
+              </label>
+            </div>
+
+            <div class="da-quickamounts" aria-label="快捷数量">
+              <button type="button" data-amount="0.10">25%</button>
+              <button type="button" data-amount="0.25">50%</button>
+              <button type="button" data-amount="0.50">100%</button>
+            </div>
+
+            <div class="da-order-summary">
+              <div><span>订单金额</span><strong id="order-notional">US$ 34,210.05</strong></div>
+              <div><span>手续费</span><strong id="order-fee">US$ 68.42</strong></div>
+              <div><span>预估滑点</span><strong>0.03% · US$ 10.26</strong></div>
+              <hr>
+              <div class="da-summary-total"><span>预计总支出</span><strong id="order-total">US$ 34,288.73</strong></div>
+            </div>
+
+            <div class="da-precheck">
+              <i data-lucide="shield-check" aria-hidden="true"></i>
+              <div>
+                <strong>交易前检查通过</strong>
+                <span>账户资格、余额与产品适当性均符合要求。</span>
+              </div>
+            </div>
+
+            <button class="da-primary da-submit" id="submit-order" type="button">确认买入 BTC</button>
+            <p class="da-order-note">提交后将跳转至订单确认页，需再次核对可成交价格与费用。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="da-screen" id="screen-assistant" aria-labelledby="assistant-title" hidden>
+        <div class="da-pagehead">
+          <div>
+            <p class="da-eyebrow">INVESTOR EDUCATION</p>
+            <h1 id="assistant-title">聊天助手</h1>
+            <p>基于知识库与实时市场数据回答投资者教育问题，并提供可追溯来源。</p>
+          </div>
+          <span class="da-edu-badge"><i data-lucide="graduation-cap" aria-hidden="true"></i> 教育用途 · 不构成投资建议</span>
+        </div>
+
+        <div class="da-chat-layout">
+          <article class="da-panel da-chat">
+            <div class="da-chathead">
+              <div class="da-assistant-avatar"><i data-lucide="sparkles" aria-hidden="true"></i></div>
+              <div>
+                <h2>Harbor AI</h2>
+                <p><span class="da-online-dot"></span> 已连接市场数据与监管知识库</p>
+              </div>
+              <button class="da-iconbtn da-iconbtn-light" type="button" aria-label="新建对话"><i data-lucide="square-pen" aria-hidden="true"></i></button>
+            </div>
+
+            <div class="da-messages">
+              <div class="da-message da-message-user">
+                <div class="da-bubble">现在买 BTC，HashKey 和 OSL 哪个总成本更低？</div>
+                <span class="da-msgtime">14:31</span>
+              </div>
+              <div class="da-message da-message-ai">
+                <div class="da-assistant-avatar"><i data-lucide="sparkles" aria-hidden="true"></i></div>
+                <div>
+                  <div class="da-bubble">
+                    <p>按当前 0.5 BTC 的报价测算，<strong>HashKey 的预估总成本为 US$ 48.72，低于 OSL 的 US$ 55.02</strong>。差异主要来自更小的价差和预估滑点。</p>
+                    <div class="da-answer-compare">
+                      <div>
+                        <span>HashKey</span>
+                        <strong>US$ 48.72</strong>
+                        <small>价差 + 手续费 + 滑点</small>
+                      </div>
+                      <div>
+                        <span>OSL</span>
+                        <strong>US$ 55.02</strong>
+                        <small>多 US$ 6.30</small>
+                      </div>
+                    </div>
+                    <p>这是基于你当前“买入 0.5 BTC”操作上下文给出的成本比较。执行前仍需在订单确认页核对实时价格与费用。</p>
+                  </div>
+                  <div class="da-citations">
+                    <button type="button"><span>1</span>交易所实时报价 · 14:32</button>
+                    <button type="button"><span>2</span>费用与滑点计算说明</button>
+                  </div>
+                  <div class="da-msg-actions">
+                    <button type="button"><i data-lucide="copy" aria-hidden="true"></i> 复制</button>
+                    <button type="button"><i data-lucide="thumbs-up" aria-hidden="true"></i> 有帮助</button>
+                    <button type="button"><i data-lucide="rotate-ccw" aria-hidden="true"></i> 重新回答</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="da-prompts" aria-label="快捷问题">
+              <button type="button">什么是滑点？</button>
+              <button type="button">稳定币理财与货币基金有什么区别？</button>
+              <button type="button">我的风险等级可以交易哪些产品？</button>
+            </div>
+            <form class="da-composer" id="assistant-form">
+              <label class="sr-only" for="assistant-input">向聊天助手提问</label>
+              <textarea id="assistant-input" rows="2" placeholder="询问产品、费用、市场概念或监管规则…"></textarea>
+              <button class="da-send" type="submit" aria-label="发送问题"><i data-lucide="send" aria-hidden="true"></i></button>
+            </form>
+            <p class="da-chat-disclaimer">回答仅供投资者教育参考，可能基于你当前所在页面提供市场数据上下文，不构成任何要约、推荐或投资建议。</p>
+          </article>
+
+          <aside class="da-context-panel">
+            <article class="da-panel da-context-card">
+              <div class="da-panelhead">
+                <div>
+                  <p class="da-eyebrow">CURRENT CONTEXT</p>
+                  <h2>当前页面上下文</h2>
+                </div>
+                <i data-lucide="route" aria-hidden="true"></i>
+              </div>
+              <div class="da-context-items">
+                <div><span>页面</span><strong>自选操作 · BTC / USDT</strong></div>
+                <div><span>操作</span><strong>买入 0.5 BTC</strong></div>
+                <div><span>比较平台</span><strong>HashKey / OSL</strong></div>
+                <div><span>数据时间</span><strong>2026-11-08 14:32:08</strong></div>
+              </div>
+              <button class="da-secondary da-full" type="button">查看完整比较</button>
+            </article>
+
+            <article class="da-panel da-context-card">
+              <div class="da-panelhead">
+                <div>
+                  <p class="da-eyebrow">GROUNDING</p>
+                  <h2>知识来源</h2>
+                </div>
+                <i data-lucide="book-open" aria-hidden="true"></i>
+              </div>
+              <ul class="da-source-list">
+                <li><span>01</span><div><strong>费用与滑点计算说明</strong><small>内部知识库 · 2026-10-28</small></div></li>
+                <li><span>02</span><div><strong>虚拟资产交易平台指引</strong><small>监管资料 · 已更新</small></div></li>
+                <li><span>03</span><div><strong>HashKey / OSL 实时报价</strong><small>市场数据 · 14:32:08</small></div></li>
+              </ul>
+            </article>
+          </aside>
+        </div>
+      </section>
+
+      <section class="da-screen" id="screen-account" aria-labelledby="account-title" hidden>
+        <div class="da-pagehead">
+          <div>
+            <p class="da-eyebrow">PORTFOLIO</p>
+            <h1 id="account-title">账户统计</h1>
+            <p>按资产、交易所与交易记录查看账户表现和费用去向。</p>
+          </div>
+          <div class="da-headactions">
+            <button class="da-secondary" type="button"><i data-lucide="download" aria-hidden="true"></i> 导出报表</button>
+            <button class="da-primary" type="button"><i data-lucide="arrow-left-right" aria-hidden="true"></i> 资金划转</button>
+          </div>
+        </div>
+
+        <div class="da-kpis da-kpis-account">
+          <article class="da-kpi">
+            <span>总资产</span>
+            <strong>HK$ 1,286,420.58</strong>
+            <small>含数字资产与现金</small>
+          </article>
+          <article class="da-kpi">
+            <span>今日盈亏</span>
+            <strong class="da-positive">+HK$ 12,486.20</strong>
+            <small class="da-positive">+0.98%</small>
+          </article>
+          <article class="da-kpi">
+            <span>累计费用</span>
+            <strong>HK$ 3,842.60</strong>
+            <small>本年度交易与申赎费用</small>
+          </article>
+          <article class="da-kpi">
+            <span>可用余额</span>
+            <strong>HK$ 428,560.00</strong>
+            <small>交易权限正常</small>
+          </article>
+        </div>
+
+        <div class="da-account-grid">
+          <article class="da-panel da-performance">
+            <div class="da-panelhead">
+              <div>
+                <h2>资产走势</h2>
+                <p>总资产与已投入本金对比</p>
+              </div>
+              <div class="da-periods" aria-label="统计周期">
+                <button type="button" data-choice-group="period">1M</button>
+                <button class="is-selected" type="button" data-choice-group="period">3M</button>
+                <button type="button" data-choice-group="period">1Y</button>
+                <button type="button" data-choice-group="period">ALL</button>
+              </div>
+            </div>
+            <div class="da-chart-legend">
+              <span><i class="da-legend-dot da-legend-brand"></i>总资产</span>
+              <span><i class="da-legend-line"></i>已投入本金</span>
+              <strong>+8.64% <small>近 3 个月</small></strong>
+            </div>
+            <svg class="da-account-chart" viewBox="0 0 700 260" role="img" aria-label="近三个月总资产从约 112 万港元升至约 128.6 万港元，已投入本金约 120 万港元">
+              <title>近三个月账户资产走势</title>
+              <defs>
+                <linearGradient id="accountArea" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="currentColor" stop-opacity=".22"></stop>
+                  <stop offset="100%" stop-color="currentColor" stop-opacity="0"></stop>
+                </linearGradient>
+              </defs>
+              <g class="da-chart-grid">
+                <line x1="0" y1="30" x2="700" y2="30"></line>
+                <line x1="0" y1="90" x2="700" y2="90"></line>
+                <line x1="0" y1="150" x2="700" y2="150"></line>
+                <line x1="0" y1="210" x2="700" y2="210"></line>
+              </g>
+              <path class="da-account-fill" d="M0 186 L58 178 L116 184 L174 165 L232 171 L290 138 L348 146 L406 121 L464 129 L522 94 L580 107 L638 71 L700 31 L700 230 L0 230 Z"></path>
+              <path class="da-account-line" d="M0 186 L58 178 L116 184 L174 165 L232 171 L290 138 L348 146 L406 121 L464 129 L522 94 L580 107 L638 71 L700 31"></path>
+              <path class="da-principal-line" d="M0 195 L58 193 L116 190 L174 188 L232 185 L290 183 L348 180 L406 177 L464 175 L522 172 L580 170 L638 167 L700 165"></path>
+              <g class="da-axis-labels">
+                <text x="0" y="252">08-08</text>
+                <text x="172" y="252">09-01</text>
+                <text x="345" y="252">10-01</text>
+                <text x="520" y="252">11-01</text>
+                <text x="676" y="252">今天</text>
+              </g>
+            </svg>
+          </article>
+
+          <article class="da-panel da-allocation">
+            <div class="da-panelhead">
+              <div>
+                <h2>资产配置</h2>
+                <p>按当前市值计算</p>
+              </div>
+              <button class="da-iconbtn da-iconbtn-light" type="button" aria-label="更多资产配置选项"><i data-lucide="ellipsis" aria-hidden="true"></i></button>
+            </div>
+            <div class="da-donutwrap">
+              <svg class="da-donut" viewBox="0 0 180 180" role="img" aria-label="资产配置：BTC 46%，ETH 21%，稳定币理财 18%，现金 15%">
+                <title>资产配置比例</title>
+                <circle cx="90" cy="90" r="62" class="da-donut-track"></circle>
+                <circle cx="90" cy="90" r="62" class="da-donut-seg1" pathLength="100"></circle>
+                <circle cx="90" cy="90" r="62" class="da-donut-seg2" pathLength="100"></circle>
+                <circle cx="90" cy="90" r="62" class="da-donut-seg3" pathLength="100"></circle>
+                <circle cx="90" cy="90" r="62" class="da-donut-seg4" pathLength="100"></circle>
+                <text x="90" y="83" text-anchor="middle" class="da-donut-label">总资产</text>
+                <text x="90" y="105" text-anchor="middle" class="da-donut-value">HK$ 1.29M</text>
+              </svg>
+            </div>
+            <div class="da-allocation-list">
+              <div><span><i class="da-dot1"></i>BTC</span><strong>46%</strong></div>
+              <div><span><i class="da-dot2"></i>ETH</span><strong>21%</strong></div>
+              <div><span><i class="da-dot3"></i>稳定币理财</span><strong>18%</strong></div>
+              <div><span><i class="da-dot4"></i>现金</span><strong>15%</strong></div>
+            </div>
+          </article>
+        </div>
+
+        <article class="da-panel da-holdings">
+          <div class="da-panelhead">
+            <div>
+              <h2>持仓与近期交易</h2>
+              <p>最近一次同步：2026-11-08 14:32:08 HKT</p>
+            </div>
+            <button class="da-textbtn" type="button">全部交易记录 <i data-lucide="chevron-right" aria-hidden="true"></i></button>
+          </div>
+          <div class="da-tablewrap">
+            <table class="da-table">
+              <thead>
+                <tr><th>资产</th><th>数量</th><th>市值</th><th>未实现盈亏</th><th>托管平台</th><th>最近交易</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="da-asset-compact"><b class="da-coin da-coin-btc">₿</b><strong>Bitcoin</strong></span></td>
+                  <td>0.842 BTC</td>
+                  <td>HK$ 591,142.60</td>
+                  <td class="da-positive">+HK$ 42,186.20</td>
+                  <td>HashKey</td>
+                  <td>11-06 · 买入</td>
+                </tr>
+                <tr>
+                  <td><span class="da-asset-compact"><b class="da-coin da-coin-eth">Ξ</b><strong>Ethereum</strong></span></td>
+                  <td>11.26 ETH</td>
+                  <td>HK$ 270,684.30</td>
+                  <td class="da-positive">+HK$ 9,842.11</td>
+                  <td>OSL</td>
+                  <td>11-03 · 买入</td>
+                </tr>
+                <tr>
+                  <td><span class="da-asset-compact"><b class="da-coin da-coin-cash">$</b><strong>USDC 活期理财</strong></span></td>
+                  <td>28,420 USDC</td>
+                  <td>HK$ 221,906.00</td>
+                  <td class="da-positive">+HK$ 1,104.20</td>
+                  <td>HashKey</td>
+                  <td>10-28 · 申购</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+</div>
+
+<style>
+  #digital-asset-ui {
+    color-scheme: light dark;
+    --da-bg: light-dark(#eef3f5, #091116);
+    --da-surface: light-dark(#ffffff, #131d24);
+    --da-surface-2: light-dark(#f6f9fa, #18242d);
+    --da-surface-3: light-dark(#edf3f4, #1d2b34);
+    --da-ink: light-dark(#13262d, #edf5f7);
+    --da-muted: light-dark(#64737a, #9cabb1);
+    --da-line: light-dark(#dce6e8, #2d3e47);
+    --da-brand: light-dark(#087c72, #43d2bd);
+    --da-brand-strong: light-dark(#065d56, #76e8d7);
+    --da-brand-soft: light-dark(#e2f4f1, #123a36);
+    --da-navy: light-dark(#0b2c37, #07171e);
+    --da-navy-2: light-dark(#123c47, #0d232c);
+    --da-positive: light-dark(#087a5b, #55d8ae);
+    --da-negative: light-dark(#c54444, #ff8585);
+    --da-warning: light-dark(#9d6400, #ffc25a);
+    --da-shadow: light-dark(0 16px 45px rgba(18, 48, 55, .12), 0 18px 50px rgba(0, 0, 0, .34));
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--da-line);
+    border-radius: 18px;
+    background: var(--da-bg);
+    color: var(--da-ink);
+    box-shadow: var(--da-shadow);
+    font-family: "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  #digital-asset-ui *,
+  #digital-asset-ui *::before,
+  #digital-asset-ui *::after {
+    box-sizing: border-box;
+  }
+
+  #digital-asset-ui button,
+  #digital-asset-ui input,
+  #digital-asset-ui select,
+  #digital-asset-ui textarea {
+    font: inherit;
+  }
+
+  #digital-asset-ui .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  #digital-asset-ui button {
+    color: inherit;
+  }
+
+  #digital-asset-ui button:focus-visible,
+  #digital-asset-ui input:focus-visible,
+  #digital-asset-ui select:focus-visible,
+  #digital-asset-ui textarea:focus-visible {
+    outline: 2px solid var(--da-brand);
+    outline-offset: 2px;
+  }
+
+  #digital-asset-ui h1,
+  #digital-asset-ui h2,
+  #digital-asset-ui p {
+    margin: 0;
+  }
+
+  #digital-asset-ui h1 {
+    font-size: 26px;
+    line-height: 1.15;
+    letter-spacing: -.03em;
+    font-weight: 600;
+  }
+
+  #digital-asset-ui h2 {
+    font-size: 15px;
+    line-height: 1.35;
+    font-weight: 600;
+  }
+
+  .da-topbar {
+    min-height: 70px;
+    padding: 13px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: var(--da-surface);
+    border-bottom: 1px solid var(--da-line);
+  }
+
+  .da-brand,
+  .da-topmeta,
+  .da-asset,
+  .da-venue,
+  .da-asset-compact,
+  .da-chathead,
+  .da-msg-actions,
+  .da-fresh,
+  .da-status,
+  .da-chart-legend,
+  .da-route-point {
+    display: flex;
+    align-items: center;
+  }
+
+  .da-brand {
+    gap: 10px;
+  }
+
+  .da-brandmark {
+    width: 36px;
+    height: 36px;
+    border-radius: 11px;
+    display: grid;
+    place-items: center;
+    background: var(--da-brand);
+    color: light-dark(#ffffff, #061614);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -.04em;
+  }
+
+  .da-brand > div:last-child {
+    display: grid;
+    gap: 1px;
+  }
+
+  .da-brand strong {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .da-brand span {
+    color: var(--da-muted);
+    font-size: 11px;
+  }
+
+  .da-topmeta {
+    gap: 12px;
+  }
+
+  .da-status {
+    gap: 6px;
+    padding: 6px 9px;
+    border-radius: 999px;
+    background: var(--da-brand-soft);
+    color: var(--da-brand-strong);
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .da-status svg,
+  .da-chip svg,
+  .da-secondary svg,
+  .da-primary svg,
+  .da-textbtn svg,
+  .da-iconbtn svg,
+  .da-navitem svg,
+  .da-watchfoot svg,
+  .da-msg-actions svg,
+  .da-edu-badge svg,
+  .da-context-card svg {
+    width: 15px;
+    height: 15px;
+    flex: 0 0 auto;
+  }
+
+  .da-clock {
+    color: var(--da-muted);
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .da-langtoggle {
+    min-height: 34px;
+    padding: 0 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--da-line);
+    border-radius: 10px;
+    background: var(--da-surface-2);
+    color: var(--da-ink);
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .da-langtoggle:hover {
+    border-color: var(--da-brand);
+    color: var(--da-brand-strong);
+  }
+
+  .da-langtoggle svg {
+    width: 15px;
+    height: 15px;
+    flex: 0 0 auto;
+  }
+
+  .da-iconbtn {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: var(--da-surface-3);
+  }
+
+  .da-iconbtn:hover {
+    border-color: var(--da-line);
+  }
+
+  .da-iconbtn-light {
+    background: transparent;
+  }
+
+  .da-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--da-brand-soft);
+    color: var(--da-brand-strong);
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .da-shell {
+    display: grid;
+    grid-template-columns: 184px minmax(0, 1fr);
+    min-height: 790px;
+  }
+
+  .da-rail {
+    padding: 20px 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: var(--da-navy);
+    color: light-dark(#d8e7e9, #d8e7e9);
+  }
+
+  .da-navlabel {
+    padding: 0 10px;
+    color: light-dark(#7f9ca4, #8199a1);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+  }
+
+  .da-nav {
+    display: grid;
+    gap: 5px;
+  }
+
+  .da-navitem {
+    width: 100%;
+    padding: 11px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: light-dark(#adc0c5, #aec1c6);
+    text-align: left;
+    font-size: 12px;
+  }
+
+  .da-navitem:hover {
+    background: var(--da-navy-2);
+    color: light-dark(#ffffff, #ffffff);
+  }
+
+  .da-navitem.is-active {
+    background: var(--da-brand);
+    color: light-dark(#ffffff, #061614);
+    font-weight: 600;
+  }
+
+  .da-railsummary {
+    margin-top: auto;
+    padding: 14px;
+    display: grid;
+    gap: 7px;
+    border-radius: 12px;
+    background: var(--da-navy-2);
+  }
+
+  .da-railsummary span {
+    color: light-dark(#8fa8ae, #8fa8ae);
+    font-size: 10px;
+  }
+
+  .da-railsummary strong {
+    font-size: 14px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .da-railsummary button {
+    margin-top: 4px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: 0;
+    background: transparent;
+    color: light-dark(#67e1cf, #66ddcc);
+    font-size: 10px;
+  }
+
+  .da-railsummary svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .da-main {
+    min-width: 0;
+    padding: 22px;
+  }
+
+  .da-screen[hidden] {
+    display: none;
+  }
+
+  .da-pagehead {
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .da-pagehead > div:first-child {
+    display: grid;
+    gap: 5px;
+  }
+
+  .da-pagehead p:not(.da-eyebrow) {
+    color: var(--da-muted);
+    font-size: 12px;
+  }
+
+  .da-eyebrow {
+    color: var(--da-brand-strong);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .16em;
+  }
+
+  .da-headactions {
+    display: flex;
+    gap: 8px;
+    flex: 0 0 auto;
+  }
+
+  .da-primary,
+  .da-secondary,
+  .da-textbtn,
+  .da-rowbtn,
+  .da-chip,
+  .da-segmented button,
+  .da-quickamounts button,
+  .da-periods button,
+  .da-order-side button {
+    border: 0;
+    border-radius: 9px;
+  }
+
+  .da-primary,
+  .da-secondary {
+    min-height: 34px;
+    padding: 8px 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .da-primary {
+    background: var(--da-brand);
+    color: light-dark(#ffffff, #061614);
+  }
+
+  .da-primary:hover {
+    filter: brightness(1.06);
+  }
+
+  .da-secondary {
+    border: 1px solid var(--da-line);
+    background: var(--da-surface);
+  }
+
+  .da-secondary:hover {
+    border-color: var(--da-brand);
+  }
+
+  .da-toolbar {
+    margin-bottom: 13px;
+    padding: 9px 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid var(--da-line);
+    border-radius: 12px;
+    background: var(--da-surface);
+  }
+
+  .da-segmented {
+    padding: 3px;
+    display: flex;
+    gap: 2px;
+    border-radius: 9px;
+    background: var(--da-surface-3);
+  }
+
+  .da-segmented button {
+    padding: 6px 10px;
+    background: transparent;
+    color: var(--da-muted);
+    font-size: 10px;
+  }
+
+  .da-segmented button.is-selected {
+    background: var(--da-surface);
+    color: var(--da-ink);
+    box-shadow: 0 1px 3px rgba(10, 30, 36, .12);
+    font-weight: 600;
+  }
+
+  .da-chips {
+    display: flex;
+    gap: 5px;
+  }
+
+  .da-chip {
+    padding: 6px 9px;
+    background: transparent;
+    color: var(--da-muted);
+    font-size: 10px;
+  }
+
+  .da-chip.is-selected {
+    background: var(--da-brand-soft);
+    color: var(--da-brand-strong);
+    font-weight: 600;
+  }
+
+  .da-fresh {
+    margin-left: auto;
+    gap: 5px;
+    color: var(--da-muted);
+    font-size: 10px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .da-fresh::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--da-positive);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--da-positive) 14%, transparent);
+  }
+
+  .da-kpis {
+    margin-bottom: 13px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .da-kpi {
+    padding: 13px 14px;
+    display: grid;
+    gap: 3px;
+    border: 1px solid var(--da-line);
+    border-radius: 12px;
+    background: var(--da-surface);
+  }
+
+  .da-kpi-featured {
+    border-color: color-mix(in srgb, var(--da-brand) 40%, var(--da-line));
+    background: linear-gradient(135deg, var(--da-brand-soft), var(--da-surface) 65%);
+  }
+
+  .da-kpi span {
+    color: var(--da-muted);
+    font-size: 10px;
+  }
+
+  .da-kpi strong {
+    font-size: 17px;
+    line-height: 1.25;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .da-kpi small {
+    color: var(--da-muted);
+    font-size: 9px;
+  }
+
+  .da-dashboard-grid {
+    margin-bottom: 13px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(255px, .8fr);
+    gap: 13px;
+  }
+
+  .da-panel {
+    min-width: 0;
+    border: 1px solid var(--da-line);
+    border-radius: 13px;
+    background: var(--da-surface);
+  }
+
+  .da-panelhead {
+    padding: 14px 15px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 1px solid var(--da-line);
+  }
+
+  .da-panelhead > div:first-child {
+    display: grid;
+    gap: 2px;
+  }
+
+  .da-panelhead p {
+    color: var(--da-muted);
+    font-size: 9px;
+  }
+
+  .da-textbtn {
+    padding: 2px;
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    background: transparent;
+    color: var(--da-brand-strong);
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .da-textbtn svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .da-tablewrap {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .da-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .da-table th {
+    padding: 9px 12px;
+    color: var(--da-muted);
+    font-size: 9px;
+    font-weight: 500;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .da-table td {
+    padding: 11px 12px;
+    border-top: 1px solid var(--da-line);
+    white-space: nowrap;
+  }
+
+  .da-table tr.is-best {
+    background: color-mix(in srgb, var(--da-brand-soft) 64%, transparent);
+  }
+
+  .da-venue {
+    gap: 7px;
+  }
+
+  .da-venue b {
+    width: 23px;
+    height: 23px;
+    border-radius: 7px;
+    display: grid;
+    place-items: center;
+    background: var(--da-navy);
+    color: light-dark(#ffffff, #ffffff);
+    font-size: 10px;
+  }
+
+  .da-mini-badge {
+    margin-left: 5px;
+    padding: 2px 5px;
+    border-radius: 4px;
+    background: var(--da-brand);
+    color: light-dark(#ffffff, #061614);
+    font-size: 8px;
+    font-weight: 700;
+  }
+
+  .da-mini-badge-neutral {
+    background: var(--da-surface-3);
+    color: var(--da-muted);
+    font-weight: 500;
+  }
+
+  .da-money {
+    font-weight: 600;
+  }
+
+  .da-rowbtn {
+    padding: 5px 8px;
+    background: var(--da-surface-3);
+    color: var(--da-ink);
+    font-size: 9px;
+  }
+
+  .da-rowbtn:hover {
+    background: var(--da-brand);
+    color: light-dark(#ffffff, #061614);
+  }
+
+  .da-footnote {
+    padding: 9px 15px 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+    color: var(--da-muted);
+    font-size: 8px;
+  }
+
+  .da-footnote svg {
+    width: 12px;
+    height: 12px;
+    flex: 0 0 auto;
+  }
+
+  .da-live {
+    padding: 3px 7px;
+    border-radius: 999px;
+    background: var(--da-brand-soft);
+    color: var(--da-brand-strong);
+    font-size: 8px;
+    font-weight: 600;
+  }
+
+  .da-route {
+    padding: 16px;
+    display: grid;
+    gap: 0;
+  }
+
+  .da-route-point {
+    padding: 10px 11px;
+    justify-content: space-between;
+    gap: 10px;
+    border-radius: 9px;
+    background: var(--da-surface-2);
+  }
+
+  .da-route-point span {
+    color: var(--da-muted);
+    font-size: 9px;
+  }
+
+  .da-route-point strong {
+    font-size: 10px;
+    text-align: right;
+  }
+
+  .da-route-point small {
+    color: var(--da-muted);
+    font-size: 8px;
+    text-align: right;
+  }
+
+  .da-route-point.is-primary {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    background: var(--da-brand-soft);
+  }
+
+  .da-route-point.is-primary span,
+  .da-route-point.is-primary strong {
+    color: var(--da-brand-strong);
+  }
+
+  .da-route-point.is-primary small {
+    grid-column: 1 / -1;
+  }
+
+  .da-route-point.is-muted {
+    background: transparent;
+  }
+
+  .da-route-line {
+    width: 1px;
+    height: 11px;
+    margin: 0 auto;
+    background: var(--da-brand);
+  }
+
+  .da-route-line.is-muted {
+    background: var(--da-line);
+  }
+
+  .da-mini-chartwrap {
+    padding: 1px 16px 14px;
+  }
+
+  .da-chart-caption {
+    margin-bottom: 2px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--da-muted);
+    font-size: 9px;
+  }
+
+  .da-chart-caption strong {
+    color: var(--da-positive);
+    font-size: 10px;
+  }
+
+  .da-spark {
+    width: 100%;
+    height: auto;
+    display: block;
+    color: var(--da-brand);
+  }
+
+  .da-axis-line {
+    stroke: var(--da-line);
+    stroke-width: 1;
+  }
+
+  .da-spark-fill {
+    fill: color-mix(in srgb, var(--da-brand) 15%, transparent);
+  }
+
+  .da-spark-line {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.3;
+  }
+
+  .da-spark-dot {
+    fill: var(--da-surface);
+    stroke: currentColor;
+    stroke-width: 2;
+  }
+
+  .da-chart-ticks {
+    display: flex;
+    justify-content: space-between;
+    color: var(--da-muted);
+    font-size: 8px;
+  }
+
+  .da-crossasset {
+    padding-bottom: 5px;
+  }
+
+  .da-product-grid {
+    padding: 12px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .da-product {
+    min-width: 0;
+    padding: 12px;
+    display: grid;
+    gap: 4px;
+    border: 1px solid var(--da-line);
+    border-radius: 10px;
+    background: var(--da-surface-2);
+    text-align: left;
+  }
+
+  .da-product.is-selected {
+    border-color: var(--da-brand);
+    box-shadow: inset 0 0 0 1px var(--da-brand);
+  }
+
+  .da-product-type {
+    color: var(--da-muted);
+    font-size: 8px;
+  }
+
+  .da-product strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 11px;
+  }
+
+  .da-return {
+    color: var(--da-positive);
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .da-return small {
+    color: var(--da-muted);
+    font-size: 8px;
+    font-weight: 400;
+  }
+
+  .da-productmeta {
+    color: var(--da-muted);
+    font-size: 8px;
+  }
+
+  .da-trade-layout {
+    display: grid;
+    grid-template-columns: minmax(320px, .9fr) minmax(360px, 1.1fr);
+    gap: 13px;
+  }
+
+  .da-watchlist {
+    overflow: hidden;
+  }
+
+  .da-watchlist-head,
+  .da-watchrow {
+    display: grid;
+    grid-template-columns: minmax(170px, 1.5fr) 1fr .68fr .68fr;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .da-watchlist-head {
+    padding: 9px 14px;
+    color: var(--da-muted);
+    font-size: 8px;
+  }
+
+  .da-watchrow {
+    width: 100%;
+    padding: 12px 14px;
+    border: 0;
+    border-top: 1px solid var(--da-line);
+    background: transparent;
+    text-align: left;
+    font-size: 10px;
+  }
+
+  .da-watchrow:hover,
+  .da-watchrow.is-selected {
+    background: var(--da-surface-2);
+  }
+
+  .da-watchrow.is-selected {
+    box-shadow: inset 3px 0 0 var(--da-brand);
+  }
+
+  .da-asset {
+    min-width: 0;
+    gap: 8px;
+  }
+
+  .da-asset > span:last-child {
+    min-width: 0;
+    display: grid;
+  }
+
+  .da-asset strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 10px;
+  }
+
+  .da-asset small {
+    color: var(--da-muted);
+    font-size: 8px;
+  }
+
+  .da-coin {
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    color: light-dark(#ffffff, #061614);
+    font-size: 12px;
+  }
+
+  .da-coin-btc {
+    background: light-dark(#e69b24, #f2b84d);
+  }
+
+  .da-coin-eth {
+    background: light-dark(#596d9f, #8da1d1);
+  }
+
+  .da-coin-sol {
+    background: light-dark(#111827, #b8c2cc);
+    color: light-dark(#ffffff, #111827);
+  }
+
+  .da-coin-cash {
+    background: light-dark(#087c72, #43d2bd);
+  }
+
+  .da-number {
+    display: grid;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+  }
+
+  .da-number small {
+    color: var(--da-muted);
+    font-size: 7px;
+    font-weight: 400;
+  }
+
+  .da-positive {
+    color: var(--da-positive);
+  }
+
+  .da-negative {
+    color: var(--da-negative);
+  }
+
+  .da-state-dot {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--da-muted);
+    font-size: 8px;
+  }
+
+  .da-state-dot::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--da-positive);
+  }
+
+  .da-watchfoot {
+    padding: 10px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    border-top: 1px solid var(--da-line);
+    color: var(--da-muted);
+    font-size: 8px;
+  }
+
+  .da-watchfoot span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .da-watchfoot svg {
+    width: 11px;
+    height: 11px;
+  }
+
+  .da-order {
+    padding-bottom: 13px;
+  }
+
+  .da-quote-pill {
+    padding: 4px 7px;
+    border-radius: 999px;
+    background: var(--da-brand-soft);
+    color: var(--da-brand-strong);
+    font-size: 9px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .da-order-side {
+    margin: 13px 15px;
+    padding: 3px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    border-radius: 10px;
+    background: var(--da-surface-3);
+  }
+
+  .da-order-side button {
+    padding: 8px;
+    background: transparent;
+    color: var(--da-muted);
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .da-order-side button.is-buy,
+  .da-order-side button.is-sell {
+    color: light-dark(#ffffff, #061614);
+  }
+
+  .da-order-side button.is-buy {
+    background: var(--da-positive);
+  }
+
+  .da-order-side button.is-sell {
+    background: var(--da-negative);
+  }
+
+  .da-field-row {
+    padding: 0 15px 11px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+  }
+
+  .da-field {
+    min-width: 0;
+    display: grid;
+    gap: 5px;
+    color: var(--da-muted);
+    font-size: 9px;
+  }
+
+  .da-selectwrap,
+  .da-inputwrap {
+    min-height: 38px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    border: 1px solid var(--da-line);
+    border-radius: 9px;
+    background: var(--da-surface-2);
+  }
+
+  .da-selectwrap:focus-within,
+  .da-inputwrap:focus-within {
+    border-color: var(--da-brand);
+  }
+
+  .da-selectwrap select,
+  .da-inputwrap input {
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--da-ink);
+    font-size: 11px;
+  }
+
+  .da-selectwrap select {
+    appearance: none;
+    padding-right: 16px;
+  }
+
+  .da-selectwrap svg {
+    width: 13px;
+    height: 13px;
+    margin-left: -20px;
+    pointer-events: none;
+  }
+
+  .da-inputwrap input {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .da-inputwrap b {
+    color: var(--da-muted);
+    font-size: 9px;
+    font-weight: 500;
+  }
+
+  .da-quickamounts {
+    padding: 0 15px 12px;
+    display: flex;
+    gap: 6px;
+  }
+
+  .da-quickamounts button {
+    flex: 1;
+    padding: 5px;
+    background: var(--da-surface-3);
+    color: var(--da-muted);
+    font-size: 8px;
+  }
+
+  .da-order-summary {
+    margin: 0 15px;
+    padding: 12px;
+    display: grid;
+    gap: 7px;
+    border-radius: 10px;
+    background: var(--da-surface-2);
+    font-size: 9px;
+  }
+
+  .da-order-summary div {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .da-order-summary span {
+    color: var(--da-muted);
+  }
+
+  .da-order-summary strong {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .da-order-summary hr {
+    width: 100%;
+    margin: 2px 0;
+    border: 0;
+    border-top: 1px solid var(--da-line);
+  }
+
+  .da-order-summary .da-summary-total {
+    font-size: 11px;
+  }
+
+  .da-summary-total strong {
+    color: var(--da-brand-strong);
+  }
+
+  .da-precheck {
+    margin: 10px 15px;
+    padding: 9px 10px;
+    display: flex;
+    gap: 8px;
+    border-radius: 9px;
+    background: var(--da-brand-soft);
+    color: var(--da-brand-strong);
+  }
+
+  .da-precheck svg {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 auto;
+  }
+
+  .da-precheck div {
+    display: grid;
+    gap: 1px;
+  }
+
+  .da-precheck strong {
+    font-size: 9px;
+  }
+
+  .da-precheck span {
+    font-size: 8px;
+  }
+
+  .da-submit {
+    width: calc(100% - 30px);
+    min-height: 42px;
+    margin: 0 15px;
+  }
+
+  .da-order-note {
+    margin: 7px 15px 0;
+    color: var(--da-muted);
+    font-size: 8px;
+    text-align: center;
+  }
+
+  .da-edu-badge {
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 9px;
+    background: var(--da-brand-soft);
+    color: var(--da-brand-strong);
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  .da-chat-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(240px, .7fr);
+    gap: 13px;
+    align-items: start;
+  }
+
+  .da-chat {
+    overflow: hidden;
+  }
+
+  .da-chathead {
+    gap: 10px;
+    padding: 13px 15px;
+    border-bottom: 1px solid var(--da-line);
+  }
+
+  .da-chathead > div:nth-child(2) {
+    display: grid;
+    gap: 1px;
+  }
+
+  .da-chathead p {
+    color: var(--da-muted);
+    font-size: 8px;
+  }
+
+  .da-chathead .da-iconbtn {
+    margin-left: auto;
+  }
+
+  .da-assistant-avatar {
+    width: 31px;
+    height: 31px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    background: var(--da-brand);
+    color: light-dark(#ffffff, #061614);
+  }
+
+  .da-assistant-avatar svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .da-online-dot {
+    width: 5px;
+    height: 5px;
+    margin-right: 4px;
+    display: inline-block;
+    border-radius: 50%;
+    background: var(--da-positive);
+  }
+
+  .da-messages {
+    min-height: 390px;
+    padding: 18px;
+    display: grid;
+    align-content: start;
+    gap: 18px;
+    background: var(--da-surface-2);
+  }
+
+  .da-message {
+    display: flex;
+    gap: 8px;
+  }
+
+  .da-message-user {
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  .da-bubble {
+    max-width: 680px;
+    padding: 11px 12px;
+    border-radius: 5px 12px 12px 12px;
+    background: var(--da-surface);
+    box-shadow: 0 1px 2px rgba(10, 30, 36, .05);
+    font-size: 10px;
+  }
+
+  .da-message-user .da-bubble {
+    border-radius: 12px 5px 12px 12px;
+    background: var(--da-brand);
+    color: light-dark(#ffffff, #061614);
+    font-size: 11px;
+  }
+
+  .da-msgtime {
+    color: var(--da-muted);
+    font-size: 8px;
+  }
+
+  .da-message-ai > div:last-child {
+    min-width: 0;
+    display: grid;
+    gap: 7px;
+  }
+
+  .da-bubble > p + p {
+    margin-top: 9px;
+  }
+
+  .da-answer-compare {
+    margin: 10px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .da-answer-compare > div {
+    padding: 9px;
+    display: grid;
+    gap: 2px;
+    border: 1px solid var(--da-line);
+    border-radius: 8px;
+    background: var(--da-surface-2);
+  }
+
+  .da-answer-compare > div:first-child {
+    border-color: var(--da-brand);
+    background: var(--da-brand-soft);
+  }
+
+  .da-answer-compare span,
+  .da-answer-compare small {
+    color: var(--da-muted);
+    font-size: 8px;
+  }
+
+  .da-answer-compare strong {
+    font-size: 14px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .da-citations {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .da-citations button {
+    padding: 4px 7px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    border: 1px solid var(--da-line);
+    border-radius: 999px;
+    background: var(--da-surface);
+    color: var(--da-muted);
+    font-size: 8px;
+  }
+
+  .da-citations button span {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--da-brand-soft);
+    color: var(--da-brand-strong);
+    font-size: 7px;
+  }
+
+  .da-msg-actions {
+    gap: 3px;
+  }
+
+  .da-msg-actions button {
+    padding: 3px 5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+    color: var(--da-muted);
+    font-size: 8px;
+  }
+
+  .da-msg-actions button:hover {
+    background: var(--da-surface-3);
+  }
+
+  .da-msg-actions svg {
+    width: 11px;
+    height: 11px;
+  }
+
+  .da-prompts {
+    padding: 10px 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    border-top: 1px solid var(--da-line);
+  }
+
+  .da-prompts button {
+    padding: 5px 8px;
+    border: 1px solid var(--da-line);
+    border-radius: 999px;
+    background: var(--da-surface);
+    color: var(--da-muted);
+    font-size: 8px;
+  }
+
+  .da-prompts button:hover {
+    border-color: var(--da-brand);
+    color: var(--da-brand-strong);
+  }
+
+  .da-composer {
+    margin: 10px 15px 0;
+    padding: 7px 7px 7px 11px;
+    display: flex;
+    align-items: flex-end;
+    gap: 7px;
+    border: 1px solid var(--da-line);
+    border-radius: 11px;
+    background: var(--da-surface-2);
+  }
+
+  .da-composer:focus-within {
+    border-color: var(--da-brand);
+  }
+
+  .da-composer textarea {
+    width: 100%;
+    min-height: 36px;
+    resize: vertical;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--da-ink);
+    font-size: 10px;
+  }
+
+  .da-composer textarea::placeholder {
+    color: var(--da-muted);
+  }
+
+  .da-send {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    border: 0;
+    border-radius: 9px;
+    background: var(--da-brand);
+    color: light-dark(#ffffff, #061614);
+  }
+
+  .da-send svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .da-chat-disclaimer {
+    padding: 8px 15px 13px;
+    color: var(--da-muted);
+    font-size: 8px;
+    text-align: center;
+  }
+
+  .da-context-panel {
+    display: grid;
+    gap: 13px;
+  }
+
+  .da-context-card {
+    overflow: hidden;
+  }
+
+  .da-context-card .da-panelhead > svg {
+    width: 17px;
+    height: 17px;
+    color: var(--da-brand-strong);
+  }
+
+  .da-context-items {
+    padding: 7px 15px;
+  }
+
+  .da-context-items div {
+    padding: 9px 0;
+    display: grid;
+    gap: 2px;
+    border-bottom: 1px solid var(--da-line);
+  }
+
+  .da-context-items div:last-child {
+    border-bottom: 0;
+  }
+
+  .da-context-items span {
+    color: var(--da-muted);
+    font-size: 8px;
+  }
+
+  .da-context-items strong {
+    font-size: 10px;
+  }
+
+  .da-full {
+    width: calc(100% - 30px);
+    margin: 0 15px 15px;
+  }
+
+  .da-source-list {
+    margin: 0;
+    padding: 7px 15px 13px;
+    list-style: none;
+  }
+
+  .da-source-list li {
+    padding: 9px 0;
+    display: flex;
+    gap: 9px;
+    border-bottom: 1px solid var(--da-line);
+  }
+
+  .da-source-list li:last-child {
+    border-bottom: 0;
+  }
+
+  .da-source-list li > span {
+    padding-top: 1px;
+    color: var(--da-brand-strong);
+    font-size: 8px;
+  }
+
+  .da-source-list div {
+    display: grid;
+    gap: 2px;
+  }
+
+  .da-source-list strong {
+    font-size: 9px;
+  }
+
+  .da-source-list small {
+    color: var(--da-muted);
+    font-size: 8px;
+  }
+
+  .da-kpis-account .da-kpi strong {
+    font-size: 16px;
+  }
+
+  .da-account-grid {
+    margin-bottom: 13px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(230px, .62fr);
+    gap: 13px;
+  }
+
+  .da-periods {
+    padding: 3px;
+    display: flex;
+    gap: 2px;
+    border-radius: 8px;
+    background: var(--da-surface-3);
+  }
+
+  .da-periods button {
+    padding: 4px 7px;
+    background: transparent;
+    color: var(--da-muted);
+    font-size: 8px;
+  }
+
+  .da-periods button.is-selected {
+    background: var(--da-surface);
+    color: var(--da-ink);
+    font-weight: 600;
+  }
+
+  .da-chart-legend {
+    gap: 14px;
+    padding: 13px 16px 0;
+    color: var(--da-muted);
+    font-size: 8px;
+  }
+
+  .da-chart-legend > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .da-chart-legend strong {
+    margin-left: auto;
+    color: var(--da-positive);
+    font-size: 11px;
+  }
+
+  .da-chart-legend small {
+    color: var(--da-muted);
+    font-size: 8px;
+    font-weight: 400;
+  }
+
+  .da-legend-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+
+  .da-legend-brand {
+    background: var(--da-brand);
+  }
+
+  .da-legend-line {
+    width: 10px;
+    border-top: 1px dashed var(--da-muted);
+  }
+
+  .da-account-chart {
+    width: 100%;
+    height: auto;
+    padding: 0 10px 10px;
+    display: block;
+    color: var(--da-brand);
+  }
+
+  .da-chart-grid line {
+    stroke: var(--da-line);
+    stroke-width: 1;
+  }
+
+  .da-account-fill {
+    fill: url(#accountArea);
+  }
+
+  .da-account-line {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+  }
+
+  .da-principal-line {
+    fill: none;
+    stroke: var(--da-muted);
+    stroke-width: 1.2;
+    stroke-dasharray: 4 4;
+  }
+
+  .da-axis-labels text {
+    fill: var(--da-muted);
+    font-size: 8px;
+  }
+
+  .da-allocation {
+    padding-bottom: 13px;
+  }
+
+  .da-donutwrap {
+    padding: 12px 16px 6px;
+  }
+
+  .da-donut {
+    width: min(100%, 170px);
+    height: auto;
+    margin: auto;
+    display: block;
+    transform: rotate(-90deg);
+  }
+
+  .da-donut-track,
+  .da-donut-seg1,
+  .da-donut-seg2,
+  .da-donut-seg3,
+  .da-donut-seg4 {
+    fill: none;
+    stroke-width: 17;
+  }
+
+  .da-donut-track {
+    stroke: var(--da-surface-3);
+  }
+
+  .da-donut-seg1 {
+    stroke: var(--da-brand);
+    stroke-dasharray: 46 54;
+  }
+
+  .da-donut-seg2 {
+    stroke: color-mix(in srgb, var(--da-brand) 68%, var(--da-surface));
+    stroke-dasharray: 21 79;
+    stroke-dashoffset: -46;
+  }
+
+  .da-donut-seg3 {
+    stroke: color-mix(in srgb, var(--da-brand) 38%, var(--da-surface));
+    stroke-dasharray: 18 82;
+    stroke-dashoffset: -67;
+  }
+
+  .da-donut-seg4 {
+    stroke: var(--da-surface-3);
+    stroke-dasharray: 15 85;
+    stroke-dashoffset: -85;
+  }
+
+  .da-donut-label,
+  .da-donut-value {
+    transform: rotate(90deg);
+    transform-origin: 90px 90px;
+    fill: var(--da-ink);
+  }
+
+  .da-donut-label {
+    font-size: 8px;
+  }
+
+  .da-donut-value {
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  .da-allocation-list {
+    padding: 0 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px 12px;
+    font-size: 8px;
+  }
+
+  .da-allocation-list div,
+  .da-allocation-list span {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+  }
+
+  .da-allocation-list i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+
+  .da-dot1 {
+    background: var(--da-brand);
+  }
+
+  .da-dot2 {
+    background: color-mix(in srgb, var(--da-brand) 68%, var(--da-surface));
+  }
+
+  .da-dot3 {
+    background: color-mix(in srgb, var(--da-brand) 38%, var(--da-surface));
+  }
+
+  .da-dot4 {
+    background: var(--da-muted);
+  }
+
+  .da-holdings {
+    overflow: hidden;
+  }
+
+  .da-asset-compact {
+    gap: 6px;
+  }
+
+  .da-asset-compact .da-coin {
+    width: 22px;
+    height: 22px;
+    font-size: 9px;
+  }
+
+  @media (max-width: 880px) {
+    .da-topmeta .da-clock,
+    .da-status {
+      display: none;
+    }
+
+    .da-shell {
+      grid-template-columns: 1fr;
+      min-height: 0;
+    }
+
+    .da-rail {
+      padding: 9px 12px;
+      gap: 8px;
+      overflow-x: auto;
+    }
+
+    .da-navlabel,
+    .da-railsummary {
+      display: none;
+    }
+
+    .da-nav {
+      display: flex;
+      min-width: max-content;
+    }
+
+    .da-navitem {
+      width: auto;
+    }
+
+    .da-dashboard-grid,
+    .da-trade-layout,
+    .da-chat-layout,
+    .da-account-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .da-kpis {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .da-product-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .da-context-panel {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .da-topbar {
+      padding: 10px 12px;
+    }
+
+    .da-brand span,
+    .da-topmeta .da-iconbtn {
+      display: none;
+    }
+
+    .da-main {
+      padding: 15px 12px;
+    }
+
+    .da-rail {
+      overflow-x: visible;
+    }
+
+    .da-nav {
+      width: 100%;
+      min-width: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .da-navitem {
+      width: 100%;
+    }
+
+    #digital-asset-ui h1 {
+      font-size: 22px;
+    }
+
+    .da-pagehead {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .da-headactions {
+      width: 100%;
+    }
+
+    .da-headactions > * {
+      flex: 1;
+    }
+
+    .da-toolbar {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .da-chips {
+      overflow-x: auto;
+    }
+
+    .da-fresh {
+      margin-left: 0;
+    }
+
+    .da-kpis {
+      grid-template-columns: 1fr;
+    }
+
+    .da-field-row,
+    .da-answer-compare,
+    .da-allocation-list,
+    .da-context-panel {
+      grid-template-columns: 1fr;
+    }
+
+    .da-watchlist-head {
+      display: none;
+    }
+
+    .da-watchrow {
+      grid-template-columns: minmax(135px, 1.4fr) 1fr .7fr;
+    }
+
+    .da-watchrow .da-state-dot {
+      display: none;
+    }
+
+    .da-watchfoot > span {
+      display: none;
+    }
+
+    .da-messages {
+      padding: 13px;
+    }
+
+    .da-message-ai .da-assistant-avatar {
+      display: none;
+    }
+
+    .da-prompts {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+
+    .da-prompts button {
+      flex: 0 0 auto;
+    }
+
+    .da-chart-legend {
+      flex-wrap: wrap;
+    }
+
+    .da-chart-legend strong {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const root = document.getElementById("digital-asset-ui");
+    if (!root) return;
+
+    const ZH_TO_EN = Object.freeze({
+      "多平台数字资产投资台": "Multi-Platform Digital Asset Desk",
+      "KYC 已完成 · 专业投资者": "KYC Complete · Professional Investor",
+      "行情更新 14:32:08 HKT": "Updated 14:32:08 HKT",
+      "工作台": "Workspace",
+      "比价大屏": "Price Comparison",
+      "自选操作": "Watchlist & Trade",
+      "聊天助手": "AI Assistant",
+      "账户统计": "Account Analytics",
+      "可用余额": "Available Balance",
+      "查看账户": "View Account",
+      "聚合持牌交易所报价，比较可执行价格、费用与预估滑点。": "Aggregated quotes from licensed exchanges, comparing executable prices, fees and estimated slippage.",
+      "刷新": "Refresh",
+      "设置比较项": "Comparison Settings",
+      "同资产多平台": "Multi-Venue",
+      "跨资产收益": "Cross-Asset Yield",
+      "稳定币理财": "Stablecoin Yield",
+      "实时 · 14:32:08": "Live · 14:32:08",
+      "最佳买入价": "Best Bid",
+      "最佳卖出价": "Best Ask",
+      "买卖价差": "Bid-Ask Spread",
+      "较市场均值低 18%": "18% below market average",
+      "预估总成本": "Est. Total Cost",
+      "买入 0.5 BTC · 含费用": "Buy 0.5 BTC · Fees included",
+      "BTC / USDT 跨平台报价": "BTC / USDT Multi-Venue Quotes",
+      "按买入 0.5 BTC 的可执行总成本排序": "Ranked by executable total cost for 0.5 BTC",
+      "查看订单簿": "View Order Book",
+      "交易所": "Exchange",
+      "买入价": "Buy Price",
+      "卖出价": "Sell Price",
+      "手续费": "Fee",
+      "预估滑点": "Est. Slippage",
+      "总成本": "Total Cost",
+      "操作": "Action",
+      "最优": "Best",
+      "选择": "Select",
+      "总成本 = 买入价 × 数量 + 手续费 + 预估滑点影响；最终成交价以订单确认页为准。": "Total cost = buy price × quantity + fees + estimated slippage; final execution price is confirmed on the order review page.",
+      "智能路由预览": "Smart Route Preview",
+      "0.5 BTC · 价格优先": "0.5 BTC · Price priority",
+      "动态": "Live",
+      "下单金额": "Order Amount",
+      "建议路径": "Recommended Route",
+      "HashKey · 限价单": "HashKey · Limit Order",
+      "预计成交 0.5 BTC": "Est. Fill 0.5 BTC",
+      "备选路径": "Alternative Route",
+      "OSL · 限价单": "OSL · Limit Order",
+      "预计多付 US$ 6.30": "US$ 6.30 more",
+      "近 24 小时价差": "24H Spread",
+      "近 24 小时跨平台价差": "24H cross-venue spread",
+      "现在": "Now",
+      "稳定币理财 vs 传统货币基金": "Stablecoin Yield vs Money Market Funds",
+      "按风险等级、期限与预估年化并排比较": "Compare by risk, liquidity and estimated yield",
+      "仅展示符合资格产品": "Eligible products only",
+      "稳定币理财 · HashKey": "Stablecoin Yield · HashKey",
+      "USDC 活期理财": "USDC Flexible Yield",
+      "预估年化": "Est. APY",
+      "T+0 赎回 · 低风险": "T+0 redemption · Low risk",
+      "稳定币理财 · OSL": "Stablecoin Yield · OSL",
+      "USDT 灵活存": "USDT Flexible Deposit",
+      "T+1 赎回 · 低风险": "T+1 redemption · Low risk",
+      "传统货币基金": "Money Market Fund",
+      "港元货币市场基金 A": "HKD Money Market Fund A",
+      "近 7 日年化": "7-day annualized",
+      "从关注列表进入报价比较，并在同一页面完成下单前检查。": "Move from your watchlist to quote comparison and complete pre-trade checks on one page.",
+      "添加自选": "Add to Watchlist",
+      "转入资金": "Transfer Funds",
+      "我的自选": "My Watchlist",
+      "4 项资产 · 价格自动刷新": "4 assets · Auto-refreshing",
+      "资产": "Asset",
+      "最新价": "Last Price",
+      "状态": "Status",
+      "可交易": "Tradable",
+      "稳定币 · 无价格波动": "Stablecoin · Price-stable",
+      "年化": "APY",
+      "可申购": "Available",
+      "点击星标可移除自选": "Use the star to remove an asset",
+      "管理分组": "Manage Groups",
+      "HashKey 最优 · 预计立即成交": "Best at HashKey · Immediate fill expected",
+      "买入 US$ 68,420.10": "Buy US$ 68,420.10",
+      "买入": "Buy",
+      "卖出": "Sell",
+      "交易所路由": "Exchange Route",
+      "自动路由 · 最优价格": "Auto Route · Best Price",
+      "订单类型": "Order Type",
+      "限价单": "Limit Order",
+      "市价单": "Market Order",
+      "买入数量": "Buy Quantity",
+      "限价": "Limit Price",
+      "订单金额": "Order Value",
+      "预计总支出": "Est. Total Debit",
+      "交易前检查通过": "Pre-Trade Checks Passed",
+      "账户资格、余额与产品适当性均符合要求。": "Eligibility, balance and product suitability checks passed.",
+      "确认买入 BTC": "Confirm BTC Buy",
+      "提交后将跳转至订单确认页，需再次核对可成交价格与费用。": "You will review the executable price and fees again before submitting the order.",
+      "基于知识库与实时市场数据回答投资者教育问题，并提供可追溯来源。": "Answers investor education questions from a knowledge base and live market data, with traceable sources.",
+      "教育用途 · 不构成投资建议": "Education Only · Not Investment Advice",
+      "已连接市场数据与监管知识库": "Connected to market data and regulatory knowledge",
+      "现在买 BTC，HashKey 和 OSL 哪个总成本更低？": "For buying BTC now, does HashKey or OSL have the lower total cost?",
+      "按当前 0.5 BTC 的报价测算，": "Based on the current quote for 0.5 BTC, ",
+      "HashKey 的预估总成本为 US$ 48.72，低于 OSL 的 US$ 55.02": "HashKey's estimated total cost is US$ 48.72, below OSL's US$ 55.02",
+      "。差异主要来自更小的价差和预估滑点。": ". The difference is mainly driven by a narrower spread and lower estimated slippage.",
+      "价差 + 手续费 + 滑点": "Spread + fees + slippage",
+      "多 US$ 6.30": "US$ 6.30 higher",
+      "这是基于你当前“买入 0.5 BTC”操作上下文给出的成本比较。执行前仍需在订单确认页核对实时价格与费用。": "This cost comparison uses your current \"Buy 0.5 BTC\" context. Confirm live prices and fees on the order review page before execution.",
+      "交易所实时报价 · 14:32": "Live exchange quotes · 14:32",
+      "费用与滑点计算说明": "Fee and Slippage Methodology",
+      "复制": "Copy",
+      "有帮助": "Helpful",
+      "重新回答": "Regenerate",
+      "什么是滑点？": "What is slippage?",
+      "稳定币理财与货币基金有什么区别？": "How does stablecoin yield differ from a money market fund?",
+      "我的风险等级可以交易哪些产品？": "Which products can my risk profile access?",
+      "向聊天助手提问": "Ask the AI assistant",
+      "回答仅供投资者教育参考，可能基于你当前所在页面提供市场数据上下文，不构成任何要约、推荐或投资建议。": "Answers are for investor education only and may use market-data context from your current page. They are not an offer, recommendation or investment advice.",
+      "当前页面上下文": "Current Page Context",
+      "页面": "Page",
+      "自选操作 · BTC / USDT": "Watchlist & Trade · BTC / USDT",
+      "买入 0.5 BTC": "Buy 0.5 BTC",
+      "比较平台": "Compared Venues",
+      "数据时间": "Data Timestamp",
+      "查看完整比较": "View Full Comparison",
+      "知识来源": "Knowledge Sources",
+      "内部知识库 · 2026-10-28": "Internal Knowledge Base · 2026-10-28",
+      "虚拟资产交易平台指引": "Virtual Asset Trading Platform Guidance",
+      "监管资料 · 已更新": "Regulatory Material · Updated",
+      "HashKey / OSL 实时报价": "HashKey / OSL Live Quotes",
+      "市场数据 · 14:32:08": "Market Data · 14:32:08",
+      "按资产、交易所与交易记录查看账户表现和费用去向。": "Review account performance and fees by asset, venue and transaction.",
+      "导出报表": "Export Report",
+      "资金划转": "Transfer Funds",
+      "总资产": "Total Assets",
+      "含数字资产与现金": "Includes digital assets and cash",
+      "今日盈亏": "Today's P&L",
+      "累计费用": "Cumulative Fees",
+      "本年度交易与申赎费用": "Trading and subscription fees YTD",
+      "交易权限正常": "Trading access active",
+      "资产走势": "Asset Trend",
+      "总资产与已投入本金对比": "Total assets vs invested principal",
+      "已投入本金": "Invested Principal",
+      "近 3 个月": "Past 3 months",
+      "近三个月账户资产走势": "Three-month account asset trend",
+      "今天": "Today",
+      "资产配置": "Asset Allocation",
+      "按当前市值计算": "By current market value",
+      "资产配置比例": "Asset allocation",
+      "现金": "Cash",
+      "持仓与近期交易": "Holdings & Recent Trades",
+      "最近一次同步：2026-11-08 14:32:08 HKT": "Last synced: 2026-11-08 14:32:08 HKT",
+      "全部交易记录": "All Transactions",
+      "数量": "Quantity",
+      "市值": "Market Value",
+      "未实现盈亏": "Unrealized P&L",
+      "托管平台": "Custodian Venue",
+      "最近交易": "Latest Trade",
+      "11-06 · 买入": "11-06 · Buy",
+      "11-03 · 买入": "11-03 · Buy",
+      "10-28 · 申购": "10-28 · Subscribe",
+      "已进入订单确认 · 原型演示": "Order Review Opened · Prototype",
+      "原型演示：问题已记录": "Prototype: Question Recorded"
+    });
+
+    const ATTRIBUTE_LABELS = Object.freeze({
+      "多平台数字资产投资台 UI 原型": "Multi-Platform Digital Asset Investment Desk UI Prototype",
+      "通知": "Notifications",
+      "用户 Leo": "User Leo",
+      "主导航": "Main Navigation",
+      "比较范围": "Comparison Scope",
+      "资产筛选": "Asset Filters",
+      "BTC 两个交易所近 24 小时价差走势，当前为 0.071%": "24-hour BTC cross-venue spread trend, currently 0.071%",
+      "搜索自选资产": "Search Watchlist Assets",
+      "交易方向": "Trade Side",
+      "快捷数量": "Quick Quantity",
+      "新建对话": "New Conversation",
+      "快捷问题": "Suggested Questions",
+      "询问产品、费用、市场概念或监管规则…": "Ask about products, fees, market concepts or regulations…",
+      "发送问题": "Send Question",
+      "统计周期": "Time Period",
+      "近三个月总资产从约 112 万港元升至约 128.6 万港元，已投入本金约 120 万港元": "Total assets rose from about HK$1.12m to HK$1.286m over three months, with about HK$1.2m in invested principal",
+      "更多资产配置选项": "More Asset Allocation Options",
+      "资产配置：BTC 46%，ETH 21%，稳定币理财 18%，现金 15%": "Asset allocation: BTC 46%, ETH 21%, stablecoin yield 18%, cash 15%"
+    });
+
+    const HAS_HAN = /[\u3400-\u9fff]/u;
+    const textOriginals = new WeakMap();
+    const attributeOriginals = new WeakMap();
+    const languageToggle = root.querySelector("#language-toggle");
+    let currentLanguage = "en";
+
+    function normalizeText(value) {
+      return String(value ?? "").replace(/\s+/g, " ").trim();
+    }
+
+    function translateText(source) {
+      if (currentLanguage !== "en") return source;
+      return ZH_TO_EN[source] ?? source;
+    }
+
+    function translateTextNode(node) {
+      const currentValue = node.nodeValue ?? "";
+      let record = textOriginals.get(node);
+      if (!record) {
+        const source = normalizeText(currentValue);
+        if (!source) return;
+        const leading = currentValue.match(/^\s*/u)?.[0] ?? "";
+        const trailing = currentValue.match(/\s*$/u)?.[0] ?? "";
+        record = { source, leading, trailing };
+        textOriginals.set(node, record);
+      }
+      node.nodeValue = `${record.leading}${translateText(record.source)}${record.trailing}`;
+    }
+
+    function translateAttributes() {
+      root.querySelectorAll("*").forEach((element) => {
+        let records = attributeOriginals.get(element);
+        if (!records) {
+          records = {};
+          attributeOriginals.set(element, records);
+        }
+        ["aria-label", "placeholder", "title", "alt"].forEach((attribute) => {
+          const currentValue = element.getAttribute(attribute);
+          if (currentValue == null) return;
+          if (!(attribute in records)) {
+            records[attribute] = normalizeText(currentValue);
+          }
+          const source = records[attribute];
+          const translated = currentLanguage === "en" ? ATTRIBUTE_LABELS[source] ?? source : source;
+          element.setAttribute(attribute, translated);
+        });
+      });
+    }
+
+    function localizeDynamicContent() {
+      root.querySelectorAll("[data-i18n-source]").forEach((element) => {
+        element.textContent = translateText(element.dataset.i18nSource);
+      });
+
+      const assistantInput = root.querySelector("#assistant-input");
+      if (assistantInput?.dataset.dynamicPlaceholder === "recorded") {
+        const source = "原型演示：问题已记录";
+        assistantInput.placeholder = translateText(source);
+        const records = attributeOriginals.get(assistantInput) ?? {};
+        records.placeholder = source;
+        attributeOriginals.set(assistantInput, records);
+      }
+    }
+
+    function applyLanguage(language) {
+      currentLanguage = language === "en" ? "en" : "zh";
+      document.documentElement.lang = currentLanguage === "en" ? "en" : "zh-CN";
+      document.title = currentLanguage === "en"
+        ? "Harbor Invest - Digital Asset Investment Desk"
+        : "Harbor Invest - 数字资产投资台 UI";
+
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      const nodes = [];
+      while (walker.nextNode()) {
+        const parent = walker.currentNode.parentElement;
+        if (parent?.closest("script, style")) continue;
+        nodes.push(walker.currentNode);
+      }
+      nodes.forEach(translateTextNode);
+      translateAttributes();
+      localizeDynamicContent();
+
+      if (languageToggle) {
+        const label = languageToggle.querySelector("span");
+        if (label) label.textContent = currentLanguage === "en" ? "中文" : "EN";
+        languageToggle.setAttribute(
+          "aria-label",
+          currentLanguage === "en" ? "Switch to Chinese" : "Switch to English"
+        );
+      }
+    }
+
+    languageToggle?.addEventListener("click", () => {
+      applyLanguage(currentLanguage === "zh" ? "en" : "zh");
+    });
+
+    const navButtons = Array.from(root.querySelectorAll("[data-screen-target]"));
+    const screens = Array.from(root.querySelectorAll(".da-screen"));
+
+    function showScreen(target) {
+      screens.forEach((screen) => {
+        screen.hidden = screen.id !== `screen-${target}`;
+      });
+      navButtons.forEach((button) => {
+        const active = button.dataset.screenTarget === target;
+        button.classList.toggle("is-active", active);
+        if (active) {
+          button.setAttribute("aria-current", "page");
+        } else {
+          button.removeAttribute("aria-current");
+        }
+      });
+    }
+
+    navButtons.forEach((button) => {
+      button.addEventListener("click", () => showScreen(button.dataset.screenTarget));
+    });
+
+    root.querySelectorAll("[data-choice-group]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const group = button.dataset.choiceGroup;
+        root.querySelectorAll(`[data-choice-group="${group}"]`).forEach((peer) => {
+          peer.classList.toggle("is-selected", peer === button);
+          if (group === "side") {
+            peer.classList.toggle("is-buy", peer === button && peer.dataset.side === "buy");
+            peer.classList.toggle("is-sell", peer === button && peer.dataset.side === "sell");
+          }
+          if (peer.tagName === "BUTTON" && peer.hasAttribute("aria-pressed")) {
+            peer.setAttribute("aria-pressed", String(peer === button));
+          }
+        });
+      });
+    });
+
+    const amount = root.querySelector("#order-amount");
+    const notional = root.querySelector("#order-notional");
+    const fee = root.querySelector("#order-fee");
+    const total = root.querySelector("#order-total");
+    const price = 68420.10;
+
+    function formatUsd(value) {
+      return `US$ ${value.toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      })}`;
+    }
+
+    function updateOrder() {
+      const quantity = Math.max(0, Number(amount?.value || 0));
+      const base = quantity * price;
+      const feeValue = base * 0.002;
+      const slippage = base * 0.0003;
+      if (notional) notional.textContent = formatUsd(base);
+      if (fee) fee.textContent = formatUsd(feeValue);
+      if (total) total.textContent = formatUsd(base + feeValue + slippage);
+    }
+
+    amount?.addEventListener("input", updateOrder);
+    root.querySelectorAll("[data-amount]").forEach((button) => {
+      button.addEventListener("click", () => {
+        if (!amount) return;
+        amount.value = button.dataset.amount;
+        updateOrder();
+      });
+    });
+
+    const assistantInput = root.querySelector("#assistant-input");
+    root.querySelectorAll(".da-prompts button").forEach((button) => {
+      button.addEventListener("click", () => {
+        if (!assistantInput) return;
+        assistantInput.value = button.textContent;
+        assistantInput.focus();
+      });
+    });
+
+    root.querySelector("#assistant-form")?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!assistantInput || !assistantInput.value.trim()) return;
+      assistantInput.value = "";
+      assistantInput.dataset.dynamicPlaceholder = "recorded";
+      assistantInput.placeholder = translateText("原型演示：问题已记录");
+    });
+
+    root.querySelector("#submit-order")?.addEventListener("click", (event) => {
+      const button = event.currentTarget;
+      button.dataset.i18nSource = "已进入订单确认 · 原型演示";
+      button.textContent = translateText(button.dataset.i18nSource);
+    });
+
+    applyLanguage("en");
+  })();
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    if (window.lucide) {
+      window.lucide.createIcons({ attrs: { width: 16, height: 16 } });
+    }
+  });
+</script>
+</body>
+</html>
