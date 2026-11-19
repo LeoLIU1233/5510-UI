@@ -7,6 +7,16 @@
 
 > 当前页面仍是 UI 原型。价格、账户、订单和 AI 回答均为演示内容，不是真实报价或投资建议。
 
+## 协作入口
+
+- 三人及 AI 的共同规则：[`CLAUDE.md`](CLAUDE.md)
+- 跨模块接口与仓库合并约定：[`docs/integration-contract.md`](docs/integration-contract.md)
+- 分工、PR 和汇总步骤：[`docs/team-workflow.md`](docs/team-workflow.md)
+- 共享 AI 命令：[`.claude/README.md`](.claude/README.md)
+- 环境变量模板：[`.env.example`](.env.example)
+
+开始修改前先阅读 `CLAUDE.md`。共享规则发生变更时必须通过 Pull Request，并由另一名组员 review。
+
 ## 一、当前完成情况
 
 | 模块 | 当前页面已实现 | 尚未完成 |
@@ -22,12 +32,16 @@
 
 ```text
 5510-UI/
+├─ CLAUDE.md           # 三人及 AI 的共享规则
+├─ .claude/            # 共享 code-review、preflight 等命令
+├─ docs/               # 接口契约和团队流程
+├─ .env.example        # 环境变量占位，不含真实密钥
+├─ .gitignore
+├─ README.md
 ├─ index.html          # HTML、CSS、JavaScript 和四个界面
 ├─ lucide.min.js       # 本地图标库
 ├─ UI.py               # Python 标准库静态服务器
-├─ start_preview.bat   # Windows 双击预览
-├─ .gitignore
-└─ README.md
+└─ start_preview.bat   # Windows 双击预览
 ```
 
 在 Windows 上双击 `start_preview.bat`，或运行：
